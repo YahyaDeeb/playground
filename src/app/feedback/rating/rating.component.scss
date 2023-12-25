@@ -1,0 +1,27 @@
+.rating {
+
+    width: 100%;
+    display: flex;
+
+    .star {
+
+        background-image: url(/assets/icons/star-regular.svg);
+        background-repeat: no-repeat;
+        height: 22px;
+        width: 22px;
+        background-size: contain;
+    }
+
+    .filled {
+
+
+        background-image: url(/assets/icons/star-filled.svg);
+    }
+
+    .half {
+
+        transform: scaleX(-1);
+        background-image: url(/assets/icons/star-half.svg);
+    }
+
+}

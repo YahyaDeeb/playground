@@ -1,0 +1,10 @@
+.parent {
+
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    direction: rtl;
+    font-family: 'DroidKufiReg';
+}

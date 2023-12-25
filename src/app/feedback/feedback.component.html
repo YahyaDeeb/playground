@@ -1,0 +1,24 @@
+<div class="cont" *ngIf="theData">
+    <div class="descAndFullName">
+        <div class="fullName">
+            {{theData.profileFullNameAr}}
+        </div>
+        <div class="desc">
+            {{theData.description}}
+        </div>
+    </div>
+    <div class="ratingAndName">
+        <div class="avatar">
+            {{theData.profileFirstNameAr ? theData.profileFirstNameAr.substring(0, 1) : ''}}
+        </div>
+
+        <div class="rate">
+            <div class="rating">
+                <app-rating [rating]="theData.rating"></app-rating>
+            </div>
+            <div class="firstName">
+                {{theData.profileFirstNameAr}}
+            </div>
+        </div>
+    </div>
+</div>
