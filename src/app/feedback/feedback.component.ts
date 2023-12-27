@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { RatingModel } from '../rating.model';
+import { RatingComponent } from './rating/rating.component';
 
 @Component({
     selector: 'app-feedback',
@@ -9,10 +10,21 @@ import { RatingModel } from '../rating.model';
 export class FeedbackComponent implements OnInit {
 
     @Input() theData: RatingModel | null = null;
+    @ViewChild(RatingComponent) theRating!: RatingComponent;
 
     constructor(
 
     ) { }
 
     ngOnInit() { }
+
+    handleClick(val: any) {
+
+        console.log('value', val);
+    }
+
+    runTheRating() {
+
+        this.theRating.test();
+    }
 }

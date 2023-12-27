@@ -14,11 +14,13 @@
 
         <div class="rate">
             <div class="rating">
-                <app-rating [rating]="theData.rating"></app-rating>
+                <app-rating (starClick)="handleClick($event)" [rating]="theData.rating"></app-rating>
             </div>
             <div class="firstName">
                 {{theData.profileFirstNameAr}}
             </div>
         </div>
     </div>
+
+    <!-- <button type="button" (click)="runTheRating()">Run the rating</button> -->
 </div>

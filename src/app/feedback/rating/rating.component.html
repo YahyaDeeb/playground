@@ -1,7 +1,11 @@
 <div class="rating" *ngIf="rating">
-    <div class="star" *ngFor="let r of ['', '', '', '', '']; let i = index" [ngClass]="{
+    <div (click)="emitTheClick(i)" class="star" *ngFor="let r of ['', '', '', '', '']; let i = index" [ngClass]="{
             'filled': i < rating,
             'half': i === floor(rating) && rating % 1
         }">
     </div>
+
+    <button type="button" (click)="changeTestValue()">Change Value</button>
+
+    <pre>Val: {{_testServ.testValue}}</pre>
 </div>

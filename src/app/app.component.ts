@@ -5,7 +5,8 @@ import { RatingModel } from './rating.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  // providers: [TestService]
 })
 export class AppComponent {
 
@@ -14,12 +15,17 @@ export class AppComponent {
   title = 'playground';
 
   constructor(
-    private x: TestService
+    public x: TestService
   ) {
 
     this.x.getInfo().subscribe((res: any) => {
 
       this.info = res;
     })
+  }
+
+  changeTestValue() {
+
+    this.x.setTestValue('from appComponent');
   }
 }

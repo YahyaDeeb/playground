@@ -1,3 +1,13 @@
 <div class="parent">
-  <app-feedback *ngFor="let c of info" [theData]="c"></app-feedback>
+  <button type="button" (click)="changeTestValue()">Change Value</button>
+
+  <pre>Val: {{x.testValue}}</pre>
+
+  <app-header></app-header>
+
+  <div class="feedbacks">
+    <app-feedback *ngFor="let c of info" [theData]="c"></app-feedback>
+  </div>
+
+
 </div>
