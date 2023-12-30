@@ -1,5 +1,5 @@
 <div class="parent">
-  <button type="button" (click)="changeTestValue()">Change Value</button>
+  <!-- <button type="button" (click)="changeTestValue()">Change Value</button>
 
   <pre>Val: {{x.testValue}}</pre>
 
@@ -7,7 +7,20 @@
 
   <div class="feedbacks">
     <app-feedback *ngFor="let c of info" [theData]="c"></app-feedback>
-  </div>
+  </div> -->
 
+  <a [routerLink]="'auth/signup'">
+    Go to signup
+  </a>
 
+  <a [routerLink]="'auth/login'">
+    Go to login
+  </a>
+
+  <!-- <button type="button" (click)="navToLogin()">
+
+    Go to login
+  </button> -->
+
+  <router-outlet></router-outlet>
 </div>

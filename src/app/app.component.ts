@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TestService } from './test.service';
 import { RatingModel } from './rating.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent {
   title = 'playground';
 
   constructor(
-    public x: TestService
+    public x: TestService,
+    private router: Router
   ) {
 
     this.x.getInfo().subscribe((res: any) => {
@@ -27,5 +29,10 @@ export class AppComponent {
   changeTestValue() {
 
     this.x.setTestValue('from appComponent');
+  }
+
+  navToLogin() {
+
+    this.router.navigate(['login']);
   }
 }

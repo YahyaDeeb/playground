@@ -1,0 +1,21 @@
+.formsSection,
+.section1 {
+
+    width: 50vw;
+    height: 100vh;
+}
+
+.section1 {
+
+    background-color: red;
+}
+
+.formsSection {
+
+    background-color: aqua;
+}
+
+:host {
+
+    display: flex;
+}
