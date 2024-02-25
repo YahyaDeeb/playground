@@ -9,18 +9,17 @@ import { HeaderComponent } from './header/header.component';
 import { UserFeedbackModule } from './feedback/feedback.module';
 import { TestService } from './test.service';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AboutUsComponent,
-    UsersComponent,
     LoginComponent,
     AuthComponent,
     SignupComponent,
@@ -28,6 +27,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,

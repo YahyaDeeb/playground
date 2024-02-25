@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AuthComponent } from './auth/auth.component';
@@ -12,10 +11,13 @@ const routes: Routes = [
 
   {
     path: 'users',
-    component: UsersComponent
+    loadChildren: () => import('./users.module').then(
+      (m) => m.UsersModule
+    ),
   },
   {
     path: 'users/:theID',
+    // resolve: { data: TestResolver },
     component: UserDetailsComponent
   },
   {

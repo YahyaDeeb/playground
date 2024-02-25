@@ -8,7 +8,8 @@
   <div class="feedbacks">
     <app-feedback *ngFor="let c of info" [theData]="c"></app-feedback>
   </div> -->
-
+  <!-- <input type="text" class="form-control" id="name" name="name" [(ngModel)]="testing" required>
+  {{testing}} -->
   <a [routerLink]="'auth/signup'">
     Go to signup
   </a>
@@ -17,10 +18,15 @@
     Go to login
   </a>
 
+  <a [routerLink]="'users'">
+    Go to users
+  </a>
+
   <!-- <button type="button" (click)="navToLogin()">
 
     Go to login
   </button> -->
 
+  <button type="button" id="myButton">Test</button>
   <router-outlet></router-outlet>
 </div>
