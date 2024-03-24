@@ -6,6 +6,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TestGuard } from './guards/test.guard';
+import { TestResolver } from './testresolver.component';
 
 const routes: Routes = [
 
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'users/:theID',
-    // resolve: { data: TestResolver },
+    resolve: { data: TestResolver },
     component: UserDetailsComponent
   },
   {

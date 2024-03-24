@@ -10,7 +10,7 @@
   </div> -->
   <!-- <input type="text" class="form-control" id="name" name="name" [(ngModel)]="testing" required>
   {{testing}} -->
-  <a [routerLink]="'auth/signup'">
+  <!-- <a [routerLink]="'auth/signup'">
     Go to signup
   </a>
 
@@ -18,15 +18,61 @@
     Go to login
   </a>
 
-  <a [routerLink]="'users'">
+  <a [routerLink]="'users/55'">
     Go to users
-  </a>
+  </a> -->
 
   <!-- <button type="button" (click)="navToLogin()">
 
     Go to login
   </button> -->
 
-  <button type="button" id="myButton">Test</button>
-  <router-outlet></router-outlet>
+  <!-- <button type="button" id="myButton">Test</button>
+  <router-outlet></router-outlet> -->
+
+  <form [formGroup]="myForm">
+
+    <mat-form-field>
+      <mat-label>This is the username</mat-label>
+      <input formControlName="username" matInput>
+      <mat-error *ngIf="myForm.get('username').hasError('required') && myForm.get('username').touched">This field is
+        required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>email</mat-label>
+      <input formControlName="email" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput>
+      <mat-error *ngIf="myForm.get('password').hasError('required') && myForm.get('password').touched">This field is
+        required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select</mat-label>
+      <mat-select formControlName="test">
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Confirm password</mat-label>
+      <input formControlName="confirmPassword" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button type="button" (click)="submitForm()">Submit</button>
+  </form>
+
 </div>

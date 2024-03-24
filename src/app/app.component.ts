@@ -3,6 +3,7 @@ import { TestService } from './test.service';
 import { RatingModel } from './rating.model';
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,40 @@ export class AppComponent implements OnInit {
   info: RatingModel[] = [];
 
   title = 'playground';
+  myForm: any;
 
   constructor(
     public x: TestService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {
 
     this.x.getInfo().subscribe((res: any) => {
 
       this.info = res;
     })
+
+    this.myForm = this.formBuilder.group({
+
+      username: ['', Validators.required],
+      email: '',
+      test: '',
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      dob: ['', Validators.required]
+    });
+  }
+
+  submitForm() {
+
+    if (this.myForm.invalid) {
+
+      this.myForm.markAllAsTouched();
+    }
+    else {
+
+      console.log('vaa', this.myForm.value)
+    }
   }
 
   changeTestValue() {
@@ -41,7 +66,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
     // this.listenToButtonEvents();
-    this.listenToMouseClickPosition();
+    // this.listenToMouseClickPosition();
   }
 
   listenToButtonEvents() {
