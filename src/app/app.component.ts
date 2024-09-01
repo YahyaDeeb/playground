@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TestService } from './test.service';
-import { RatingModel } from './rating.model';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RatingModel } from './rating.model';
+import { TestService } from './test.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   title = 'playground';
   myForm: any;
+  maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 20));
 
   constructor(
     public x: TestService,
@@ -36,9 +37,44 @@ export class AppComponent implements OnInit {
       email: '',
       test: '',
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', [Validators.required, this.validateIfPasswordsAreEqual()]],
       dob: ['', Validators.required]
     });
+
+    this.myForm.get('password').valueChanges.subscribe(() => {
+
+      this.myForm.get('confirmPassword').updateValueAndValidity();
+    });
+  }
+
+  validateIfPasswordsAreEqual(): ValidatorFn {
+
+    return (control: AbstractControl): ValidationErrors | null => {
+
+      const formGroup = control.parent;
+      const password = formGroup?.get('password')?.value;
+      const confirmationPassword = control.value;
+
+      return password && confirmationPassword && password !== confirmationPassword
+        ? { passwordsNotEqual: true }
+        : null;
+    };
+  }
+
+  moreThan20Validator(): ValidatorFn {
+
+    return (control: AbstractControl): ValidationErrors | null => {
+
+      const selectedDate = control.value;
+      if (!selectedDate) {
+        return null; // No value, so no validation error.
+      }
+
+      const thisYear = new Date().getFullYear();
+      const year = new Date(selectedDate).getFullYear();
+
+      return thisYear - year >= 20 ? null : { tooYoung: true };
+    };
   }
 
   submitForm() {

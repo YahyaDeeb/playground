@@ -34,19 +34,29 @@
 
     <mat-form-field>
       <mat-label>This is the username</mat-label>
-      <input formControlName="username" matInput>
+      <input
+        formControlName="username"
+        matInput
+      >
       <mat-error *ngIf="myForm.get('username').hasError('required') && myForm.get('username').touched">This field is
         required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>email</mat-label>
-      <input formControlName="email" matInput>
+      <input
+        formControlName="email"
+        matInput
+      >
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input formControlName="password" matInput>
+      <input
+        formControlName="password"
+        matInput
+        type="password"
+      >
       <mat-error *ngIf="myForm.get('password').hasError('required') && myForm.get('password').touched">This field is
         required</mat-error>
     </mat-form-field>
@@ -61,18 +71,43 @@
 
     <mat-form-field>
       <mat-label>Confirm password</mat-label>
-      <input formControlName="confirmPassword" matInput>
+      <input
+        formControlName="confirmPassword"
+        matInput
+        type="password"
+      >
+
+      <mat-error
+        *ngIf="myForm.get('confirmPassword').hasError('passwordsNotEqual') && myForm.get('confirmPassword').touched"
+      >
+        Passwords must match
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dob">
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="dob"
+        [max]="maxDate"
+      >
       <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+
+      <mat-error *ngIf="myForm.get('dob').hasError('tooYoung') && myForm.get('dob').touched">
+        Too young
+      </mat-error>
     </mat-form-field>
 
-    <button type="button" (click)="submitForm()">Submit</button>
+    <button
+      type="button"
+      (click)="submitForm()"
+    >Submit</button>
   </form>
 
 </div>
